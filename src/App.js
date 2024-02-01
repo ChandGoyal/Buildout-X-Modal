@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./App.module.css";
+import "./App.css";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +42,9 @@ function App() {
     const dobDate = new Date(formData.dob);
     const currentDate = new Date();
 
-    if (dobDate > currentDate) {
-      errors.dob = "Invalid date of birth. Please enter a valid date.";
+    if (isNaN(dobDate.getTime()) || dobDate >= currentDate) {
+      errors.dob =
+        "Invalid date of birth. Date of birth cannot be in the future.";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -67,18 +68,15 @@ function App() {
   };
 
   return (
-    <div className={styles.app}>
+    <div className="app">
       <h1>User Details Modal</h1>
-      <button className={styles.openButton} onClick={() => setIsOpen(true)}>
+      <button className="open-button" onClick={() => setIsOpen(true)}>
         Open Form
       </button>
       {isOpen && (
-        <div className={styles.modal} onClick={() => setIsOpen(false)}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <form className={styles.form}>
+        <div className="modal" onClick={() => setIsOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <form className="form">
               <label htmlFor="username">Username:</label>
               <input
                 type="text"
@@ -87,7 +85,7 @@ function App() {
                 onChange={handleInputChange}
                 required
               />
-              <div className={styles.error}>{formErrors.username}</div>
+              <div className="error">{formErrors.username}</div>
 
               <label htmlFor="email">Email Address:</label>
               <input
@@ -97,7 +95,7 @@ function App() {
                 onChange={handleInputChange}
                 required
               />
-              <div className={styles.error}>{formErrors.email}</div>
+              <div className="error">{formErrors.email}</div>
 
               <label htmlFor="phone">Phone Number:</label>
               <input
@@ -107,7 +105,7 @@ function App() {
                 onChange={handleInputChange}
                 required
               />
-              <div className={styles.error}>{formErrors.phone}</div>
+              <div className="error">{formErrors.phone}</div>
 
               <label htmlFor="dob">Date of Birth:</label>
               <input
@@ -117,11 +115,11 @@ function App() {
                 onChange={handleInputChange}
                 required
               />
-              <div className={styles.error}>{formErrors.dob}</div>
+              <div className="error">{formErrors.dob}</div>
 
-              <div className={styles.submitButtonContainer}>
+              <div className="submit-button-container">
                 <button
-                  className={styles.submitButton}
+                  className="submit-button"
                   type="button"
                   onClick={handleSubmit}
                 >
