@@ -85,6 +85,7 @@ function App() {
                 id="username"
                 value={formData.username}
                 onChange={handleInputChange}
+                required
               />
               <div className={styles.error}>{formErrors.username}</div>
 
@@ -94,6 +95,7 @@ function App() {
                 id="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                required
               />
               <div className={styles.error}>{formErrors.email}</div>
 
@@ -103,6 +105,7 @@ function App() {
                 id="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
+                required
               />
               <div className={styles.error}>{formErrors.phone}</div>
 
@@ -112,6 +115,7 @@ function App() {
                 id="dob"
                 value={formData.dob}
                 onChange={handleInputChange}
+                required
               />
               <div className={styles.error}>{formErrors.dob}</div>
 
